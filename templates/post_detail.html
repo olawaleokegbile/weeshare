@@ -1,0 +1,49 @@
+{% extends 'index.html' %}
+{% block content %}
+<div class="jumbotron mt-3 shadow-lg">
+    <article class="media content-section shadow ">
+        <img src="{{ posts.author.profile.avatar.url }}" alt="" width="50" 
+        height="50"  class="article-img rounded-circle img-thumbnail img-fluid">
+        <div class="media-body">
+          <div class="">
+            <div class="d-flex justify-content-between">
+            <a class="mr-2 mt-0 mb-0  text-dark"><h3>{{ posts.author }}</h3></a>
+            <small class="text-muted  text-align-right">{{ posts.date_posted }}</small>
+            </div>
+            {% if posts.author != user %}
+              <div class="form-group mt-0 pt-0 d-flex justify-content-end">          
+                <a href="{{ posts.file.url }}" download class="btn btn-primary flex-last" type="submit"><i class="fas fa-download"></i> Download</a>
+              </div>
+            {% endif %}
+            <hr>
+            {% if posts.author == user %}
+              <div>
+                <a class="btn btn-secondary btn-sm mt-1 mb-1" href="{% url 'post-update' posts.id %}">Update</a>
+                <a class="btn btn-danger btn-sm mt-1 mb-1" href="{% url 'post-delete' posts.id %}">Delete</a>
+              </div>
+            {% endif %}
+          </div>
+          <div>
+            {% if posts.file %}
+              {% if posts.extension == '.jpg' or posts.extension == 'jpeg' or posts.extension == 'png' %}
+                <a href="{{ posts.file.url }}"  download ><img src="{{ posts.file.url }}" alt="" class="img-fluid "></a>
+                <a href="{{ posts.file.url }}"  download class="text-dark"><h5>{{ posts.file }}</h5></a>
+              {% elif posts.extension == '.mp4' %}
+                <div class="embed-responsive embed-responsive-16by9">
+                  <video id="video-1_html_api" class="vjs-tech" preload="auto" autoplay >
+                    <source src="{{ posts.file.url }}" type="video/mp4" class="embed-responsive">
+                  </video>
+                </div>
+                <a href="{{ posts.file.url }}"  download class="text-dark"><h5>{{ posts.file }}</h5></a>
+              {% else %}
+                <a href="{{ posts.file.url }}"  download class="text-dark"><h5>{{ posts.file }}</h5></a>
+              {% endif %}
+            {% endif %}
+          </div>
+          <h2>{{ posts.title }}</h2>
+          <p class="article-content">{{ posts.content }}</p>
+        </div>
+      </article>
+
+
+{% endblock %}

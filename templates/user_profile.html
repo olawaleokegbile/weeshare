@@ -1,0 +1,30 @@
+{% extends 'index.html' %}
+
+{% block title %}
+    {{user.username}}'s Profile
+{% endblock %}
+
+{% block content %}
+<div class="row justify-content-center">
+    <div class="col-6">
+      <div class="">
+        <div="card-body">
+          <img class="img-fluid rounded-start" style="max-width: 50%; height: auto;" src="{{ user.profile.avatar.url }}">
+          <div class="media-body">
+            <br>
+            <h3 class="text-secondary">Username: {{ user.username }}</h2>
+      </div>
+      <ul class="list-group list-group-flush">
+        <li class="list-group-item"><strong><i class="fa fa-fw fa-user-alt"></i></strong>: {{ user.profile.first_name }} {{ user.profile.last_name }}</li>
+        <li class="list-group-item"><strong><i class="fa fa-fw fa-envelope"></i></strong>: {{ user.profile.email_address }}</li>
+        {% if user.profile.gender == Male %}
+          <li class="list-group-item"><strong><i class="fa fa-male"></i></strong>: {{ user.profile.gender }}</li>
+        {% else %}
+          <li class="list-group-item"><strong><i class="fa fa-female"></i></strong>: {{ user.profile.gender }}</li>
+        {% endif %}
+        <li class="list-group-item"><strong><i class="fa fa-sticky-note"></i></strong>: {{ user.profile.desc }}</li>
+      </ul>
+    </div>
+</div>
+
+{% endblock %}

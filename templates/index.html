@@ -1,0 +1,267 @@
+{% load crispy_forms_tags %}
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <title>{% block title %}WeeShare{% endblock %}</title>
+
+    <!-- Custom fonts for this template-->
+    <link href="{% static 'vendor/fontawesome-free/css/all.min.css' %}" rel="stylesheet" type="text/css">
+    <link
+        href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i"
+        rel="stylesheet">
+
+    <!-- Custom styles for this template-->
+    <link href="{% static 'css/sb-admin-2.min.css' %}" rel="stylesheet">
+
+</head>
+
+<body id="page-top">
+  <main>
+    <!-- Page Wrapper -->
+    <div id="wrapper">
+
+        <!-- Sidebar -->
+        <ul class="navbar-nav bg-gradient-primary sidebar sidebar-dark accordion" id="accordionSidebar">
+
+            <!-- Sidebar - Brand -->
+            <a class="sidebar-brand d-flex align-items-center justify-content-center">
+                <div class="sidebar-brand-text mx-3">WeeShare</div>
+            </a>
+
+            <!-- Divider -->
+            <hr class="sidebar-divider my-0">
+
+            <!-- Nav Item - Dashboard -->
+            <li class="nav-item active">
+                <a class="nav-link" href="/">
+                    <i class="fas fa-fw fa-tachometer-alt"></i>
+                    <span>Dashboard</span></a>
+            </li>
+
+            <!-- Divider -->
+            <hr class="sidebar-divider">
+
+            <!-- Nav Item - Pages Collapse Menu -->
+            <li class="nav-item active">
+                <a class="nav-link" href="{% url 'my-profile' %}">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-person" viewBox="0 0 16 16">
+                        <path d="M8 8a3 3 0 1 0 0-6 3 3 0 0 0 0 6zm2-3a2 2 0 1 1-4 0 2 2 0 0 1 4 0zm4 8c0 1-1 1-1 1H3s-1 0-1-1 1-4 6-4 6 3 6 4zm-1-.004c-.001-.246-.154-.986-.832-1.664C11.516 10.68 10.289 10 8 10c-2.29 0-3.516.68-4.168 1.332-.678.678-.83 1.418-.832 1.664h10z"/>
+                    </svg>
+                    <span>Profile</span>
+                </a>
+            </li>
+
+            <hr class="sidebar-divider">
+            
+            <li class="nav-item active">
+                <a href="{% url 'my-post' %}" class="nav-link">
+                    <i class="fas fa-user-shield"></i>
+                    <span>My Post</span></a>
+                </a>
+            </li>
+
+            <hr class="sidebar-divider">
+            
+            <li class="nav-item active">
+                <a href="{% url 'new-post' %}" class="nav-link">
+                    <i class="fas fa-user-edit"></i>
+                    <span>New Post</span></a>
+                </a>
+            </li>
+
+            <hr class="sidebar-divider">
+
+            <!-- Nav Item - Utilities Collapse Menu -->
+                <li class="nav-item active">
+                    <a class="nav-link" href={% url 'account_login' %}>
+                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-box-arrow-in-right" viewBox="0 0 16 16">
+                            <path fill-rule="evenodd" d="M6 3.5a.5.5 0 0 1 .5-.5h8a.5.5 0 0 1 .5.5v9a.5.5 0 0 1-.5.5h-8a.5.5 0 0 1-.5-.5v-2a.5.5 0 0 0-1 0v2A1.5 1.5 0 0 0 6.5 14h8a1.5 1.5 0 0 0 1.5-1.5v-9A1.5 1.5 0 0 0 14.5 2h-8A1.5 1.5 0 0 0 5 3.5v2a.5.5 0 0 0 1 0v-2z"/>
+                            <path fill-rule="evenodd" d="M11.854 8.354a.5.5 0 0 0 0-.708l-3-3a.5.5 0 1 0-.708.708L10.293 7.5H1.5a.5.5 0 0 0 0 1h8.793l-2.147 2.146a.5.5 0 0 0 .708.708l3-3z"/>
+                        </svg>
+                        <span>Sign in/Sign up</span>
+                    </a>
+                </li>
+            </li>
+
+            <!-- Divider -->
+            <hr class="sidebar-divider">
+        </ul>
+        <!-- End of Sidebar -->
+
+        <!-- Content Wrapper -->
+        <div id="content-wrapper" class="d-flex flex-column">
+
+            <!-- Main Content -->
+            <div id="content">
+
+                <!-- Topbar -->
+                <nav class="navbar navbar-expand navbar-light bg-white topbar mb-4 static-top shadow">
+
+                    <!-- Sidebar Toggle (Topbar) -->
+                    <button id="sidebarToggleTop" class="btn btn-link d-md-none rounded-circle mr-3">
+                        <i class="fa fa-bars"></i>
+                    </button>
+
+                    <!-- Topbar Search -->
+                    <form
+                        class="d-none d-sm-inline-block form-inline mr-auto ml-md-3 my-2 my-md-0 mw-100 navbar-search">
+                        <div class="input-group">
+                            <input type="text" class="form-control bg-light border-0 small" placeholder="Search for..."
+                                aria-label="Search" aria-describedby="basic-addon2">
+                            <div class="input-group-append">
+                                <button class="btn btn-primary" type="button">
+                                    <i class="fas fa-search fa-sm"></i>
+                                </button>
+                            </div>
+                        </div>
+                    </form>
+
+                    <!-- Topbar Navbar -->
+                    <ul class="navbar-nav ml-auto">
+
+                        <!-- Nav Item - Search Dropdown (Visible Only XS) -->
+                        <li class="nav-item dropdown no-arrow d-sm-none">
+                            <a class="nav-link dropdown-toggle" href="#" id="searchDropdown" role="button"
+                                data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                <i class="fas fa-search fa-fw"></i>
+                            </a>
+                            <!-- Dropdown - Messages -->
+                            <div class="dropdown-menu dropdown-menu-right p-3 shadow animated--grow-in"
+                                aria-labelledby="searchDropdown">
+                                <form class="form-inline mr-auto w-100 navbar-search">
+                                    <div class="input-group">
+                                        <input type="text" class="form-control bg-light border-0 small"
+                                            placeholder="Search for..." aria-label="Search"
+                                            aria-describedby="basic-addon2">
+                                        <div class="input-group-append">
+                                            <button class="btn btn-primary" type="button">
+                                                <i class="fas fa-search fa-sm"></i>
+                                            </button>
+                                        </div>
+                                    </div>
+                                </form>
+                            </div>
+                        </li>
+
+                       
+                        <!-- Nav Item - User Information -->
+                    {% if request.user.is_authenticated %}
+                        <li class="nav-item dropdown no-arrow">
+                            <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button"
+                                data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                <span class="mr-2 d-none d-lg-inline text-gray-600 small">{{request.user}}</span>
+                                <img class="img-profile rounded-circle"
+                                    src="{{user.profile.avatar.url}}">
+                            </a>
+                            <!-- Dropdown - User Information -->
+                            <div class="dropdown-menu dropdown-menu-right shadow animated--grow-in"
+                                aria-labelledby="userDropdown">
+                                <a class="dropdown-item" href="{% url 'account_logout' %}">
+                                    <i class="fas fa-user fa-sm fa-fw mr-2 text-gray-400"></i>
+                                    Logout
+                                </a>
+                            </div>
+                        </li>
+                    {% endif %}
+                    </ul>
+
+                </nav>
+                {% block content %}
+                {% for post in posts %}
+                  <div class="jumbotron mt-3 bg-white shadow-lg">
+                  <article class="media content-section shadow">
+                        <img src="{{ post.author.profile.avatar.url }}" alt="" width="50" 
+                        height="50"  class="article-img rounded-circle img-thumbnail img-fluid shadow">
+                    <div class="media-body">
+                      <div class="article-metadata d-flex justify-content-between">
+                        <a class="mr-2 " href="{% url 'user-profile' post.author.username %}"><h3>{{ post.author }}</h3></a>
+                          <small class="text-muted">{{ post.date_posted|date:"F d, Y" }}</small>
+                      </div>
+                      {% if post.file %}
+                      <a href="{{ post.file.url }}"  download class="text-dark text-justify "><h5></h5></a>
+                      {% endif %}
+                 
+                  
+                 
+                      <h5><a class="article-title text-justify " href="{% url 'post-detail' post.id %}">{{ post.title }}</a></h5>
+                      <div class="d-flex justify-content-between">
+                        <p class="article-content text-justify text-truncate overflow-hidden">{{ post.content }}</p>
+                      {% if post.file %}
+                      <div class="form-group mt-0 pt-0  m-2">          
+                        <a class="btn btn-outline-primary  btn-d "  href="{{ post.file.url }}"  download type="submit"><i class="fas fa-download"></i></a>
+                      </div>
+                      {% endif %}
+                    
+                      </div>
+                  
+                    </div>
+                    <div class="collapse" id="comments{{ post.id }}">
+                        <div class="mt-2 card card-body">
+                            {% for comment in post.comments.all %}
+                                <code class="blockquote text-center border-bottom" style="font-size: 0.8rem">
+                                    {{ comment.text }}
+    
+                                    <footer class="blockquote-footer">
+                                    {% if comment.user == user %}
+                                        Me
+                                    {% else %}
+                                        {{ comment.user.username }}
+                                    {% endif %}
+                                        {{ comment.comment_date}}
+                                    </footer>
+                                </code>
+                            {% endfor %}
+                            <form method="POST" action="{% url 'add-comment' post.id %}">
+                                {% csrf_token %}
+                                    <div class="form-group">
+                                        {{ c_form|crispy }}
+                                    </div>
+                                <input type="submit" value="post" class="btn btn-outline-primary">
+                            </form>
+                        </div>
+                    </div>
+                  </article>
+                {% endfor %}
+
+                {% endblock content %}
+            
+    </div>
+    <!-- End of Page Wrapper -->
+
+    <!-- Scroll to Top Button-->
+    <a class="scroll-to-top rounded" href="#page-top">
+        <i class="fas fa-angle-up"></i>
+    </a>
+
+
+    <!-- Bootstrap core JavaScript-->
+    
+    {% block script %}{% endblock script %}
+    <script src="{% static 'vendor/jquery/jquery.min.js' %}"></script>
+    <script src="{% static 'vendor/bootstrap/js/bootstrap.bundle.min.js' %}"></script>
+
+    <!-- Core plugin JavaScript-->
+    <script src="{% static 'vendor/jquery-easing/jquery.easing.min.js' %}"></script>
+
+    <!-- Custom scripts for all pages-->
+    <script src="{% static 'js/sb-admin-2.min.js' %}"></script>
+
+    <!-- Page level plugins -->
+    <script src="{% static 'vendor/chart.js/Chart.min.js' %}"></script>
+
+    <!-- Page level custom scripts -->
+    <script src="{% static 'js/demo/chart-area-demo.js' %}"></script>
+    <script src="{% static 's/demo/chart-pie-demo.js' %}"></script>
+  </main>  
+</body>
+
+</html>
