@@ -1,4 +1,4 @@
-WeeShare is a file sharing applications between registered users
+WeeShare is a file sharing application between registered users built with Django (A Python web framework).
 
 It offers users the opportunity to upload any kind of file ranging from MP4, PDF, .jpg, .jpeg, png, to mention but a few.
 
