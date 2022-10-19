@@ -1,1 +1,4 @@
-'WeeShare is a File and Image sharing application between registered user' 
+WeeShare is a file sharing applications between registered users
+
+It offers users the opportunity to upload any kind of file ranging from MP4, PDF, .jpg, .jpeg, png, to mention but a few
+Users can view the profile of the person that uploaded the file to be able to have an idea of what the person looks like
